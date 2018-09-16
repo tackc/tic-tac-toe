@@ -1,12 +1,12 @@
 console.log("javascript running");
 
 /*------------------------ constants ------------------------*/
-  
-
-/*------------------------ app's state (variables) ------------------------*/
 
 
-// var gameBoard;
+/*------------------------ apps state (variables) ------------------------*/
+
+
+var gameBoard;
 var position;
 var gameStatus;
 var resetBtn;
@@ -14,6 +14,7 @@ var winner;
 var loser;
 var preventMove;
 var whosTurn;
+var body;
 
 var winningCombinations = [
       "box1, box2, box3",
@@ -23,8 +24,8 @@ var winningCombinations = [
       "box2, box5, box8",
       "box3, box6, box9",
       "box1, box5, box9",
-      "box7, box5, box3",
-]
+      "box7, box5, box3"
+];
 
 var xWins;
 var oWins;
@@ -40,9 +41,41 @@ var oWins;
 // Make your move
 function makeMove() {
       gameBoard.onclick = function() {
-            this.classList.add("x");
+            position.classList.add("x");
+      };
+}
+
+
+
+function cutWire(event) {
+      // Function for when a user cuts a wire
+      if (!wiresCut[this.id] && !gameOver) {
+        // Apply the cut wire image
+        event.target.src = "img/cut-" + this.id + "-wire.png";
+        wiresCut[this.id] = true;
+        // Was this a correct wire?
+        var wireIndex = wiresToCut.indexOf(this.id);
+        if (wireIndex > -1) {
+          // This was a good wire...
+          console.log(this.id + " was correct!");
+          wiresToCut.splice(wireIndex, 1);
+          if (checkForWin()) {
+            endGame(true);
+          }
+        } else {
+          // That was a bad wire...
+          console.log(this.id + " was incorrect!");
+          bombDelay = setTimeout(function() {
+            endGame(false);
+          }, 750);
+        }
       }
-} 
+    }
+
+
+
+
+
 
 
 // Player Won Game
@@ -73,14 +106,13 @@ function newGame () {
 document.addEventListener("DOMContentLoaded", function() {
       console.log("DOM loaded");
       body = document.body;
+
+      gameBoard = document.getElementById("gameBoard").children;
+      gameStatus = document.querySelector("h2");
+      resetBtn = document.querySelector("button");
+      whosTurn = document.querySelector("h3");
       
-      var gameBoard = document.getElementById('gameBoard').children;
-      
-      gameStatus = document.querySelector('h2');
-      resetBtn = document.querySelector('button');
-      whosTurn = document.querySelector('h3');
-      
-      position = document.getElementsByClassName('position');
+      position = document.getElementsByClassName("position");
 
       initGame();
       });
@@ -88,12 +120,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 /*------------------------ event listeners ------------------------*/
-gameBoard.addEventListener('click', position);
-      // for (let position of gameBoard) {
-      //       gameBoard.addEventListener('click', move);
-      // }
+gameBoard.addEventListener("click", position);
+      // for (let position of gameBoard);
 
-resetBtn.addEventListener('click', reset);
+// resetBtn.addEventListener("click", reset);
 
 // Player Tied Game
 
