@@ -13,19 +13,23 @@
             <header>
                   <h1>Tic-Tac-Toe-Yo!</h1>
                   <h2>Game Status Goes Here...</h2>
-                  <button class="btn playAgainBtn">Play Again</button>
+                  <h3>X - It's your turn!</h3>
             </header>
-
-            <div class="wrapper gameBoard">
-                  <div class="box1 leftColumn topRow cellHover"></div>
-                  <div class="box2 centerColumn topRow cellHover"></div>
-                  <div class="box3 rightColumn topRow cellHover"></div>
-                  <div class="box4 leftColumn centerRow cellHover"></div>
-                  <div class="box5 centerColumn centerRow cellHover"></div>
-                  <div class="box6 rightColumn centerRow cellHover"></div>
-                  <div class="box7 leftColumn bottomRow cellHover"></div>
-                  <div class="box8 centerColumn bottomRow cellHover"></div>
-                  <div class="box9 rightColumn bottomRow cellHover"></div>
+<!-- The main contents of my game board are below -->
+            <div class="wrapper gameBoard" id="gameBoard">
+                  <div class="box1 leftColumn topRow cellHover cell position"></div>
+                  <div class="box2 centerColumn topRow cellHover cell position"></div>
+                  <div class="box3 rightColumn topRow cellHover cell position"></div>
+                  <div class="box4 leftColumn centerRow cellHover cell position"></div>
+                  <div class="box5 centerColumn centerRow cellHover cell position"></div>
+                  <div class="box6 rightColumn centerRow cellHover cell position"></div>
+                  <div class="box7 leftColumn bottomRow cellHover cell position"></div>
+                  <div class="box8 centerColumn bottomRow cellHover cell position"></div>
+                  <div class="box9 rightColumn bottomRow cellHover cell position"></div>
+            </div>
+<!-- Reset button -->
+            <div class="resetBtn">
+                  <button class="btn">Reset Game</button>
             </div>
       </main>
        

@@ -10,8 +10,15 @@ body {
   margin-top: 3em;
 }
 
+.cell {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 .cellHover:hover {
-  background-color: rgba(213, 213, 213, 0.55) 
+  background-color: rgba(213, 213, 213, 0.55);
+  cursor: pointer;
 }
 
 main {
@@ -50,8 +57,24 @@ h2 {
   font-size: 2.5vw;
 }
 
+h3 {
+  font-size: 2.5vw;
+}
 
-/* Play Again button styles */
+.x {
+  background-image: url(../img/x.png)
+}
+
+.o {
+  background-image: url(../img/o.png)
+}
+
+.resetBtn {
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Reset button styles */
 
 /* Main settings for button from https://codepen.io/rheckers/pen/JaMpbQ */
 .btn{
@@ -73,5 +96,6 @@ h2 {
 
 .btn:hover{
   background-position: 100% 0;
+  cursor: pointer;
 }
 
