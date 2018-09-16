@@ -1,35 +1,48 @@
-/*----- constants -----*/
-      
+console.log("javascript running");
 
-/*----- app's state (variables) -----*/
+/*------------------------ constants ------------------------*/
+const xImg = img/x.png;
+const oImg = img/o.png;  
 
-
-/*----- cached element references -----*/
-
-
-/*----- event listeners -----*/
+/*------------------------ app's state (variables) ------------------------*/
 
 
-/*----- functions -----*/
+var gameBoard;
+var position;
 
 
 
+/*------------------------ cached element references ------------------------*/
 
 
-// Initialize Game
-      // Clear game board
-      // Click alternates between "x" or "o"
+/*------------------------ event listeners ------------------------*/
+
+
+/*----------------------------- functions -----------------------------*/
 
 // Player Won Game
+function 
 
+function playerWon () {
+      // If player won game, draw line through winning move
+      // Show text displaying that player won
+}
 
 // Player Lost Game
 
+// Begin "New Game"
+function newGame () {
+      // Remove class that contains "you won, you lost, or you tied" text
+      // Reset game board
+}
+
+// Initialize Game
+      function initGame() {
+            //   initialize variables
+            position = [];
+            
 
 // Player Tied Game
-
-
-// Begin "New Game"
 
 
 // Reset Game
@@ -37,4 +50,4 @@
 
 // Randomly Select place to play
 
-// Check for gameBoard already occupied
+// Check for gameBoard already occupied //
