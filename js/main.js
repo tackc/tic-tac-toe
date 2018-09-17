@@ -34,18 +34,23 @@ function gameBoardCell(e) {
       if (e.target !== e.currentTarget) {
             clickedItem = e.target.id;
             console.log("Hello " + clickedItem);
-            globalClickedItem = clickedItem;
+            // globalClickedItem = clickedItem;
       }
-      e.target.classList.add("x");
+      console.log(e.target);
+      e.target.classList.add(whosTurn);
+      if(whosTurn === "x") {
+            whosTurn = "o"
+      } else {
+            whosTurn = "x"
+      };
       // e.stopPropagation();
       // alert(clickedItem);
 }
 
 console.log("Hello " + clickedItem);
 
-// function whosTurn() {
-//       if ()
-// }
+
+
 
 
 
@@ -65,21 +70,22 @@ function resetGame() {
 }
 
 // // Initialize Game
-      function initGame() {
-            //   initialize variables
-            cellAvailable = []
-            cellPlayed = {
-                  box1: false,
-                  box2: false,
-                  box3: false,
-                  box4: false,
-                  box5: false,
-                  box6: false,
-                  box7: false,
-                  box8: false,
-                  box9: false
-            }
-      }
+function initGame() {
+      //   initialize variables
+      cellAvailable = [];
+      cellPlayed = {
+            box1: false,
+            box2: false,
+            box3: false,
+            box4: false,
+            box5: false,
+            box6: false,
+            box7: false,
+            box8: false,
+            box9: false
+      };
+      whosTurn = "x";
+}
 
 document.addEventListener("DOMContentLoaded", function() {
       console.log("DOM loaded");
@@ -109,16 +115,16 @@ document.addEventListener("DOMContentLoaded", function() {
 // Player Lost Game
 // Player Tied Game
 // Check for gameBoard already occupied //
-// var winningCombinations = [
-//       "box1, box2, box3",
-//       "box4, box5, box6",
-//       "box7, box8, box9",
-//       "box1, box4, box7",
-//       "box2, box5, box8",
-//       "box3, box6, box9",
-//       "box1, box5, box9",
-//       "box7, box5, box3"
-// ];
+var winningCombinations = [
+      "box1, box2, box3",
+      "box4, box5, box6",
+      "box7, box8, box9",
+      "box1, box4, box7",
+      "box2, box5, box8",
+      "box3, box6, box9",
+      "box1, box5, box9",
+      "box7, box5, box3"
+];
 
 // var gameStatus;
 // var winner;
