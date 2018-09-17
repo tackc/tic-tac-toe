@@ -9,7 +9,11 @@ var gameBoard = document.getElementById("gameBoard");
 var resetBtn = document.querySelector("button");
 var preventMove;
 var whosTurn;
-var globalClickedItem;
+var turnCount;
+var clickedItem;
+// var globalClickedItem;
+var body;
+var cellPlayed;
 
 /*------------------------ cached element references ------------------------*/
 
@@ -28,35 +32,20 @@ gameBoard.addEventListener("click", gameBoardCell, false);
 //This function grabs the children elements of gameBoard and sets click listeners for all of them using propagation
 function gameBoardCell(e) {
       if (e.target !== e.currentTarget) {
-            var clickedItem = e.target.id;
+            clickedItem = e.target.id;
             console.log("Hello " + clickedItem);
             globalClickedItem = clickedItem;
       }
-      e.stopPropagation();
-      alert(clickedItem);
-      clickedItem.classList.add("x");
+      e.target.classList.add("x");
+      // e.stopPropagation();
+      // alert(clickedItem);
 }
 
+console.log("Hello " + clickedItem);
 
 
 
-//----------------------------I'm hoping I can convert this code so it adds the class of "x" or "o"
-// function updateFrom(cell) {
-//       var gameBoard = cell.parentNode.querySelector("cell");
-//       var value = parseInt(num.textContent, 10);
-//       var change = cell.className === "x" ? 1 : -1;
-//       num.textContent = value + change;
-//   }
-  
-//   var theParent = document.getElementById("gameBoard");
-//   theParent.addEventListener("click", doSomething, false);
-   
-//   function doSomething(e) {
-//       if (e.target.nodeName === "BUTTON") {
-//           updateFrom(e.target);
-//       }
-//   }
-//------------------------------------------------------------------------------------------------
+
 
 
 
@@ -73,7 +62,18 @@ function resetGame() {
 // // Initialize Game
       function initGame() {
             //   initialize variables
-            // gameBoardCell = [];
+            cellAvailable = []
+            cellPlayed = {
+                  box1: false,
+                  box2: false,
+                  box3: false,
+                  box4: false,
+                  box5: false,
+                  box6: false,
+                  box7: false,
+                  box8: false,
+                  box9: false
+            }
       }
 
 document.addEventListener("DOMContentLoaded", function() {
