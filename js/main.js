@@ -6,29 +6,31 @@ console.log("javascript running");
 /*------------------------ apps state (variables) ------------------------*/
 
 
-var gameBoard;
-var position;
-var gameStatus;
-var resetBtn;
-var winner;
-var loser;
+var gameBoard = document.getElementById("gameBoard");
+
+
+
+// var gameBoardCell = document.getElementsByClassName("gameBoardCell");
+var resetBtn = document.querySelector("button");
 var preventMove;
 var whosTurn;
-var body;
 
-var winningCombinations = [
-      "box1, box2, box3",
-      "box4, box5, box6",
-      "box7, box8, box9",
-      "box1, box4, box7",
-      "box2, box5, box8",
-      "box3, box6, box9",
-      "box1, box5, box9",
-      "box7, box5, box3"
-];
+// var winningCombinations = [
+//       "box1, box2, box3",
+//       "box4, box5, box6",
+//       "box7, box8, box9",
+//       "box1, box4, box7",
+//       "box2, box5, box8",
+//       "box3, box6, box9",
+//       "box1, box5, box9",
+//       "box7, box5, box3"
+// ];
 
-var xWins;
-var oWins;
+// var gameStatus;
+// var winner;
+// var loser;
+// var xWins;
+// var oWins;
 
 
 
@@ -39,113 +41,74 @@ var oWins;
 
 /*----------------------------- functions -----------------------------*/
 // Make your move
-function makeMove() {
-      gameBoard.onclick = function() {
-            position.classList.add("x");
-      };
-}
+// function makeMove() {
+//       gameBoard.onclick = function() {
+//             gameBoardCell.classList.add("x");
+//       };
+// }
 
-
-
-function cutWire(event) {
-      // Function for when a user cuts a wire
-      if (!wiresCut[this.id] && !gameOver) {
-        // Apply the cut wire image
-        event.target.src = "img/cut-" + this.id + "-wire.png";
-        wiresCut[this.id] = true;
-        // Was this a correct wire?
-        var wireIndex = wiresToCut.indexOf(this.id);
-        if (wireIndex > -1) {
-          // This was a good wire...
-          console.log(this.id + " was correct!");
-          wiresToCut.splice(wireIndex, 1);
-          if (checkForWin()) {
-            endGame(true);
-          }
-        } else {
-          // That was a bad wire...
-          console.log(this.id + " was incorrect!");
-          bombDelay = setTimeout(function() {
-            endGame(false);
-          }, 750);
-        }
+//this sets aa click listener for the parent element of the game board. I then created a function named "gameBoardCell"
+gameBoard.addEventListener("click", gameBoardCell, false);
+//This function grabs the children elements of gameBoard and sets click listeners for all of them using propagation
+function gameBoardCell(e) {
+      if (e.target !== e.currentTarget) {
+            var clickedItem = e.target.id;
+            console.log("Hello " + clickedItem);
       }
-    }
+      e.stopPropagation();
+}
 
-
-
-
-
-
-
-// Player Won Game
-function whosTurn() {
+// Reset Button Logic
+function resetGame() {
+      // If reset button pressed
+      gameBoardCell.classList.remove("x");
+      gameBoardCell.classList.remove("o");
+      
+      // clear gameboard
 
 }
 
-function playerWon() {
-      // If player won game, draw line through winning move
-      // Show text displaying that player won
-}
-
-
-// Player Lost Game
-
-// Begin "New Game"
-function newGame () {
-      // Remove class that contains "you won, you lost, or you tied" text
-      // Reset game board
-}
-
-// Initialize Game
+// // Initialize Game
       function initGame() {
             //   initialize variables
-            position = [];
-}
+            // gameBoardCell = [];
+      }
 
 document.addEventListener("DOMContentLoaded", function() {
       console.log("DOM loaded");
-      body = document.body;
-
-      gameBoard = document.getElementById("gameBoard").children;
-      gameStatus = document.querySelector("h2");
-      resetBtn = document.querySelector("button");
-      whosTurn = document.querySelector("h3");
-      
-      position = document.getElementsByClassName("position");
-
-      initGame();
+      // body = document.body;
+      // gameStatus = document.querySelector("h2");
+      // whosTurn = document.querySelector("h3");
+      // initGame();
       });
 
 
 
 /*------------------------ event listeners ------------------------*/
-gameBoard.addEventListener("click", position);
-      // for (let position of gameBoard);
 
-// resetBtn.addEventListener("click", reset);
 
+
+
+// ----------------------------------------Extras-----------------------------
+
+// // Player Won Game
+
+// function playerWon() {
+//       // If player won game, draw line through winning move
+//       // Show text displaying that player won
+// }
+
+// Player Lost Game
 // Player Tied Game
-
-
-// Reset Game
-
-// Randomly Select place to play
-// for (let wire in wiresCut) {
-//       wiresCut[wire]
-//       var rand = Math.random();
-//       if (rand > 0.5) {
-//         wiresToCut.push(wire);
-//       }
-//     }
-
 // Check for gameBoard already occupied //
 
 
 
 
 // Display an empty tic-tac-toe board when the page is initially displayed.
+
 // A player can click on the nine cells to make a move.
+
 // Every click will alternate between marking an X and O.
 // Once occupied with an X or O, the cell cannot be played again.
 // Provide a Reset Game button that will clear the contents of the board.
