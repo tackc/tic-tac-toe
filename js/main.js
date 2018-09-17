@@ -43,7 +43,9 @@ function gameBoardCell(e) {
 
 console.log("Hello " + clickedItem);
 
-
+// function whosTurn() {
+//       if ()
+// }
 
 
 
@@ -52,11 +54,14 @@ console.log("Hello " + clickedItem);
 // Reset Button Logic
 function resetGame() {
       // If reset button pressed
-      gameBoard.classList.remove("x");
-      gameBoard.classList.remove("o");
-      
-      // clear gameboard
+      var cells = document.getElementsByClassName("gameBoardCell");
+            for (let cell of cells) {
+                  cell.classList.remove("x");
+                  cell.classList.remove("o"); 
+            }
+            // clear gameboard
 
+      
 }
 
 // // Initialize Game
@@ -79,6 +84,7 @@ function resetGame() {
 document.addEventListener("DOMContentLoaded", function() {
       console.log("DOM loaded");
       body = document.body;
+      resetBtn.addEventListener("click", resetGame);
       // gameStatus = document.querySelector("h2");
       // whosTurn = document.querySelector("h3");
       // initGame();
